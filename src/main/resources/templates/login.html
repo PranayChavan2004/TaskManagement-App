@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | TaskFlow</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body{
+            background: linear-gradient(-45deg,#4f46e5,#7c3aed,#2563eb,#9333ea);
+            background-size:400% 400%;
+            animation:bgMove 12s ease infinite;
+        }
+
+        @keyframes bgMove{
+            0%{background-position:0% 50%;}
+            50%{background-position:100% 50%;}
+            100%{background-position:0% 50%;}
+        }
+
+        .glass{
+            backdrop-filter: blur(18px);
+            background: rgba(255,255,255,.95);
+            box-shadow:0 20px 45px rgba(0,0,0,.15);
+        }
+
+        .input-field{
+            transition:.3s;
+        }
+
+        .input-field:focus{
+            transform:translateY(-2px);
+            box-shadow:0 10px 20px rgba(79,70,229,.15);
+        }
+
+        .login-btn{
+            transition:.3s;
+        }
+
+        .login-btn:hover{
+            transform:translateY(-3px);
+        }
+
+        .illustration{
+            background:rgba(255,255,255,.12);
+            backdrop-filter:blur(12px);
+        }
+    </style>
+
+</head>
+
+<body class="min-h-screen flex items-center justify-center px-6">
+
+<div class="max-w-6xl w-full grid lg:grid-cols-2 rounded-3xl overflow-hidden shadow-2xl">
+
+    <!-- Left Side -->
+    <div class="hidden lg:flex flex-col justify-center text-white p-14 illustration">
+
+        <h1 class="text-5xl font-bold mb-6 leading-tight">
+            Welcome to
+            <br>
+            TaskFlow
+        </h1>
+
+        <p class="text-lg opacity-90 leading-8">
+            Organize your work, manage your tasks, track progress,
+            and stay productive with a modern task management system.
+        </p>
+
+        <div class="mt-14">
+
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-4 h-4 rounded-full bg-green-400"></div>
+                <span>Manage Daily Tasks</span>
+            </div>
+
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-4 h-4 rounded-full bg-yellow-300"></div>
+                <span>Track Progress Easily</span>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <div class="w-4 h-4 rounded-full bg-pink-400"></div>
+                <span>Secure Authentication</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Right Side -->
+    <div class="glass p-10 lg:p-14">
+
+        <h2 class="text-4xl font-bold text-gray-800 text-center">
+            Welcome Back 👋
+        </h2>
+
+        <p class="text-center text-gray-500 mt-3 mb-8">
+            Sign in to continue managing your tasks.
+        </p>
+
+        <!-- Error -->
+        <div th:if="${param.error}"
+             class="mb-6 bg-red-100 border border-red-300 text-red-700 px-4 py-3 rounded-xl">
+
+            Invalid username or password.
+
+        </div>
+
+        <!-- Logout -->
+        <div th:if="${param.logout}"
+             class="mb-6 bg-green-100 border border-green-300 text-green-700 px-4 py-3 rounded-xl">
+
+            You have been logged out successfully.
+
+        </div>
+
+        <form th:action="@{/login}" method="post" class="space-y-6">
+
+            <div>
+
+                <label class="block mb-2 text-gray-600 font-medium">
+                    Username
+                </label>
+
+                <input
+                        type="text"
+                        name="username"
+                        required
+                        autofocus
+                        placeholder="Enter username"
+                        class="input-field w-full border rounded-xl px-5 py-4 focus:outline-none focus:ring-4 focus:ring-indigo-400">
+
+            </div>
+
+            <div>
+
+                <label class="block mb-2 text-gray-600 font-medium">
+                    Password
+                </label>
+
+                <div class="relative">
+
+                    <input
+                            id="password"
+                            type="password"
+                            name="password"
+                            required
+                            placeholder="Enter password"
+                            class="input-field w-full border rounded-xl px-5 py-4 pr-16 focus:outline-none focus:ring-4 focus:ring-indigo-400">
+
+                    <button
+                            type="button"
+                            onclick="togglePassword()"
+                            class="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-indigo-600 font-semibold">
+
+                        Show
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <button
+                    type="submit"
+                    class="login-btn w-full py-4 rounded-xl text-white font-semibold text-lg bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700">
+
+                Login
+
+            </button>
+
+        </form>
+
+        <div class="text-center mt-8 text-gray-600">
+
+            Don't have an account?
+
+            <a href="/register"
+               class="text-indigo-600 font-semibold hover:underline">
+
+                Create Account
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+    function togglePassword(){
+
+        const input=document.getElementById("password");
+
+        if(input.type==="password"){
+
+            input.type="text";
+
+            event.target.innerHTML="Hide";
+
+        }else{
+
+            input.type="password";
+
+            event.target.innerHTML="Show";
+
+        }
+
+    }
+
+</script>
+
+</body>
+</html>
