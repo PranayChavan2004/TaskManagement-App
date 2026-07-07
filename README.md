@@ -163,23 +163,8 @@ The application provides:
 
 ---
 
-## Future Enhancements
-
-- Search Tasks
-- Due Dates
-- Task Priority
-- Categories
-- Dashboard Analytics
-- Email Notifications
-- Reminder System
-- Dark Mode
-- REST APIs
-- Docker Support
-
----
 
 ## Developer
 
 **Pranay Chavan**
 
-GitHub: https://github.com/PranayChavan2004
