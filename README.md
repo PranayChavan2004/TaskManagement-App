@@ -122,8 +122,8 @@ Update your `application.properties`:
 
 ```properties
 spring.datasource.url=jdbc:mysql://localhost:3306/taskmanager_app
-spring.datasource.username=root
-spring.datasource.password=root
+spring.datasource.username=username
+spring.datasource.password=your_password
 
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
