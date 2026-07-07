@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Task - TaskHelp</title>
+    <title>Edit Task - TaskFlow</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -22,19 +22,15 @@
         }
 
         @keyframes bgAnimation{
-
             0%{
                 background-position:0% 50%;
             }
-
             50%{
                 background-position:100% 50%;
             }
-
             100%{
                 background-position:0% 50%;
             }
-
         }
 
         .glass-card{
@@ -134,7 +130,7 @@
                         value="TODO"
                         th:selected="${task.status == 'TODO'}">
 
-                    📌 To Do
+                    To Do
 
                 </option>
 
@@ -142,7 +138,7 @@
                         value="IN_PROGRESS"
                         th:selected="${task.status == 'IN_PROGRESS'}">
 
-                    🚀 In Progress
+                    In Progress
 
                 </option>
 
@@ -150,7 +146,7 @@
                         value="DONE"
                         th:selected="${task.status == 'DONE'}">
 
-                    ✅ Completed
+                    Completed
 
                 </option>
 
@@ -166,7 +162,7 @@
                     type="submit"
                     class="btn bg-gradient-to-r from-green-500 to-emerald-600 text-white py-4 rounded-xl font-semibold text-lg hover:from-green-600 hover:to-emerald-700">
 
-                💾 Save Changes
+                Save Changes
 
             </button>
 
@@ -174,7 +170,7 @@
                     href="/home"
                     class="btn bg-gray-700 text-white py-4 rounded-xl font-semibold text-lg text-center hover:bg-gray-800">
 
-                ← Cancel
+                Cancel
 
             </a>
 
